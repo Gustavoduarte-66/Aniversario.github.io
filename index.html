@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -22,19 +23,8 @@ h1{
     font-size: 40px;
     text-shadow: 0 0 15px rgb(255, 255, 255);
     animation: pulse 1.5s infinite;
-}
 
-@keyframes pulse {
-    0%, 100% {
-        opacity: 1;
-        text-shadow: 0 0 15px rgb(255, 255, 255);
-    }
-    50% {
-        opacity: 0.8;
-        text-shadow: 0 0 25px rgb(255, 100, 150);
-    }
 }
-
 /* BODY */
 body{
     background:#050510;
@@ -89,38 +79,11 @@ body{
 /* INPUT */
 input{
     width:100%;
-    padding: 10px;
-    margin: 15px 0;
-    border: 1px solid #00aaff;
-    border-radius: 5px;
-    background: rgba(0, 170, 255, 0.1);
-    color: #00aaff;
-    font-family: 'Courier New', monospace;
-}
-
-input::placeholder {
-    color: #00aaff;
-    opacity: 0.6;
 }
 
 /* BOTÃO */
 button{
     width:100%;
-    padding: 10px;
-    margin-top: 15px;
-    border: 1px solid #00aaff;
-    border-radius: 5px;
-    background: rgba(0, 170, 255, 0.2);
-    color: #00aaff;
-    font-family: 'Courier New', monospace;
-    font-size: 16px;
-    cursor: pointer;
-    transition: all 0.3s;
-}
-
-button:hover {
-    background: rgba(0, 170, 255, 0.4);
-    box-shadow: 0 0 10px #00aaff;
 }
 
 /* CONTAINER DA MENSAGEM */
@@ -137,27 +100,23 @@ button:hover {
     transform:translate(-50%,-50%);
 
     width:900px;
-    max-height: 80vh;
 
     background:rgba(255, 255, 255, 0.85);
 
     padding:40px;
 
     border-radius:25px;
-    overflow-y: auto;
 }
 
 /* TEXTO */
 #texto{
     white-space:pre-line;
     color: #00aaff;
-    line-height: 1.6;
 }
 
 /* CURSOR */
 .cursor{
     animation:blink .7s infinite;
-    color: #00aaff;
 }
 
 @keyframes blink{
@@ -166,31 +125,20 @@ button:hover {
     }
 }
 
-.assinatura {
-    margin-top: 30px;
-    text-align: right;
-    color: #00aaff;
-    font-weight: bold;
-    font-size: 18px;
-}
-
 /* CORAÇÕES */
 .coracao{
     position:fixed;
     top:-50px;
     z-index:2;
-    font-size: 30px;
 }
 
 @keyframes cair{
     from{
         transform:translateY(-100px);
-        opacity: 1;
     }
 
     to{
         transform:translateY(120vh);
-        opacity: 0;
     }
 }
 
@@ -239,50 +187,6 @@ button:hover {
 </div>
 
 <script>
-
-// MATRIX EFFECT
-const canvas = document.getElementById('matrix');
-const ctx = canvas.getContext('2d');
-
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-
-const chars = '01アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン';
-const charArray = chars.split('');
-
-const fontSize = 16;
-const columns = canvas.width / fontSize;
-const drops = [];
-
-for (let i = 0; i < columns; i++) {
-    drops[i] = Math.random() * canvas.height;
-}
-
-function drawMatrix() {
-    ctx.fillStyle = 'rgba(5, 5, 16, 0.05)';
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-    ctx.fillStyle = '#00aaff';
-    ctx.font = fontSize + 'px monospace';
-
-    for (let i = 0; i < drops.length; i++) {
-        const text = charArray[Math.floor(Math.random() * charArray.length)];
-        ctx.fillText(text, i * fontSize, drops[i]);
-
-        if (drops[i] * Math.random() > 0.975) {
-            drops[i] = 0;
-        }
-
-        drops[i] += fontSize;
-    }
-}
-
-setInterval(drawMatrix, 50);
-
-window.addEventListener('resize', () => {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-});
 
 // SENHA
 function entrar(){
@@ -433,6 +337,9 @@ function escrever(){
         setTimeout(escrever,45);
     }
 }
+
+// MATRIX
+// (cole aqui o código Matrix funcionando)
 
 // CORAÇÕES
 function criarCoracao(){
